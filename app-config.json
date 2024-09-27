@@ -1,16 +1,12 @@
 {
   "app": {
-    "title": "zmp-blank-templates",
-    "headerTitle": "zmp-blank-templates",
-    "headerColor": "#1843EF",
-    "textColor": "white",
-    "textAlign": "left",
-    "statusBarColor": "#1843EF",
-    "leftButton": "back",
+    "title": "Clothing store",
+    "textColor": "black",
+    "headerColor": "#ffffff",
     "statusBar": "normal",
-    "actionBarHidden": false,
+    "actionBarHidden": true,
     "hideAndroidBottomNavigationBar": false,
-    "hideIOSSafeAreaBottom": false
+    "hideIOSSafeAreaBottom": true
   },
   "debug": false,
   "pages": [],
