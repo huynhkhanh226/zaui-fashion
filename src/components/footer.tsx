@@ -50,7 +50,7 @@ export default function Footer() {
             <div className="w-6 h-6 flex justify-center items-center">
               <item.icon active={isActive} />
             </div>
-            <div className={`text-xxSmall ${isActive ? "text-primary" : ""}`}>
+            <div className={`text-2xs ${isActive ? "text-primary" : ""}`}>
               {item.name}
             </div>
           </div>

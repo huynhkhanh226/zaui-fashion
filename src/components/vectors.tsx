@@ -179,3 +179,22 @@ export function SearchIcon(props: HTMLProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function ChevronRight() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M5.64642 2.64297C5.84168 2.44771 6.15826 2.44771 6.35352 2.64297L11.3535 7.64297C11.5488 7.83823 11.5488 8.15481 11.3535 8.35007L6.35352 13.3501C6.15826 13.5453 5.84168 13.5453 5.64642 13.3501C5.45115 13.1548 5.45115 12.8382 5.64642 12.643L10.2929 7.99652L5.64642 3.35007C5.45115 3.15481 5.45115 2.83823 5.64642 2.64297Z"
+        fill="#3459A7"
+      />
+    </svg>
+  );
+}
