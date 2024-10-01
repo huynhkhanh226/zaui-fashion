@@ -1,0 +1,10 @@
+{
+  "name": "ZaUI Fashion",
+  "options": {
+    "API_URL": {
+      "title": "API URL",
+      "description": "Đường dẫn đến API để lấy dữ liệu sản phẩm",
+      "type": "string"
+    }
+  }
+}

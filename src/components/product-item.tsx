@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Product } from "types";
 import { formatPrice } from "utils/format";
 
@@ -6,8 +7,13 @@ export interface ProductItemProps {
 }
 
 export default function ProductItem(props: ProductItemProps) {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex flex-col">
+    <div
+      className="flex flex-col cursor-pointer"
+      onClick={() => navigate(`/product/${props.product.id}`)}
+    >
       <img
         src={props.product.image}
         className="w-full h-[150px] object-cover rounded-t-lg"

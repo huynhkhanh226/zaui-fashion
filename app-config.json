@@ -6,11 +6,17 @@
     "statusBar": "normal",
     "actionBarHidden": true,
     "hideAndroidBottomNavigationBar": false,
-    "hideIOSSafeAreaBottom": true
+    "hideIOSSafeAreaBottom": true,
+    "statusBarColor": "",
+    "textAlign": "left",
+    "selfControlLoading": false
   },
   "debug": false,
   "pages": [],
   "listCSS": [],
   "listSyncJS": [],
-  "listAsyncJS": []
+  "listAsyncJS": [],
+  "template": {
+    "API_URL": ""
+  }
 }

@@ -1,3 +1,7 @@
+// Polyfills
+import ResizeObserver from "resize-observer-polyfill";
+Object.assign(window, { ResizeObserver });
+
 import { useCallback, useEffect, useState } from "react";
 import { EmblaCarouselType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";

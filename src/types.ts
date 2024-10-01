@@ -12,3 +12,8 @@ export interface Category {
   name: string;
   image: string;
 }
+
+export interface Color {
+  name: string;
+  hex: string;
+}

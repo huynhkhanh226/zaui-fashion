@@ -1,18 +1,8 @@
 import { atom } from "jotai";
-import { Product } from "types";
+import { atomFamily } from "jotai/utils";
+import { Category, Color, Product } from "types";
+import { requestWithFallback } from "utils/request";
 import { getUserInfo } from "zmp-sdk";
-
-const categoryImages = import.meta.glob<{ default: string }>(
-  "./static/shop/categories/*.png",
-  { eager: true }
-);
-
-const productImages = import.meta.glob<{ default: string }>(
-  "./static/shop/products/*.jpg",
-  { eager: true }
-);
-
-console.log(categoryImages);
 
 export const userState = atom(() =>
   getUserInfo({
@@ -21,71 +11,52 @@ export const userState = atom(() =>
 );
 
 export const categoriesState = atom(() =>
-  ["Áo phông", "Váy liền thân", "Chống nắng", "Quần jean"].map(
-    (name, index) => ({
-      id: index + 1,
-      name,
-      image:
-        categoryImages[`./static/shop/categories/${index + 1}.png`].default,
-    })
-  )
+  requestWithFallback<Category[]>("/categories", [])
 );
 
-export const productsState = atom<Product[]>((get) => {
-  const category = get(categoriesState)[0];
-  return [
-    {
-      id: 1,
-      name: "Light brown knit sweater",
-      price: 189000,
-    },
-    {
-      id: 2,
-      name: "Beige oversized sweater",
-      price: 189000,
-      originalPrice: 300000,
-    },
-    {
-      id: 3,
-      name: "Brown casual sweater",
-      price: 189000,
-      originalPrice: 300000,
-    },
-    {
-      id: 4,
-      name: "Dark brown crew neck sweater",
-      price: 189000,
-      originalPrice: 300000,
-    },
-    {
-      id: 5,
-      name: "Brown ribbed sweater",
-      price: 189000,
-      originalPrice: 300000,
-    },
-    {
-      id: 6,
-      name: "Chunky brown sweater",
-      price: 189000,
-      originalPrice: 300000,
-    },
-    {
-      id: 7,
-      name: "Classic brown wool sweater",
-      price: 189000,
-      originalPrice: 300000,
-    },
-    {
-      id: 8,
-      name: "Long brown sweater brown sweater",
-      price: 189000,
-      originalPrice: 300000,
-    },
-  ].map((product) => ({
+export const productsState = atom(async (get) => {
+  const categories = await get(categoriesState);
+  const products = await requestWithFallback<
+    (Product & { categoryId: number })[]
+  >("/products", []);
+  return products.map((product) => ({
     ...product,
-    category,
-    image: productImages[`./static/shop/products/${product.id}.jpg`].default,
+    category: categories.find(
+      (category) => category.id === product.categoryId
+    )!,
   }));
 });
 
 export const flashSaleProductsState = atom((get) => get(productsState));
+
+export const sizesState = atom(["S", "M", " L", "XL"]);
+
+export const selectedSizeState = atom<string | undefined>(undefined);
+
+export const colorsState = atom<Color[]>([
+  {
+    name: "Đỏ",
+    hex: "#FFC7C7",
+  },
+  {
+    name: "Xanh dương",
+    hex: "#DBEBFF",
+  },
+  {
+    name: "Xanh lá",
+    hex: "#D1F0DB",
+  },
+  {
+    name: "Xám",
+    hex: "#D9E2ED",
+  },
+]);
+
+export const selectedColorState = atom<Color | undefined>(undefined);
+
+export const productState = atomFamily((id: number) =>
+  atom(async (get) => {
+    const products = await get(productsState);
+    return products.find((product) => product.id === id);
+  })
+);

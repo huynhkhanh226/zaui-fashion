@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Light brown knit sweater",
+    "price": 189000,
+    "categoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Beige oversized sweater",
+    "price": 189000,
+    "originalPrice": 300000
+  },
+  {
+    "id": 3,
+    "name": "Brown casual sweater",
+    "price": 189000,
+    "originalPrice": 300000
+  },
+  {
+    "id": 4,
+    "name": "Dark brown crew neck sweater",
+    "price": 189000,
+    "originalPrice": 300000
+  },
+  {
+    "id": 5,
+    "name": "Brown ribbed sweater",
+    "price": 189000,
+    "originalPrice": 300000
+  },
+  {
+    "id": 6,
+    "name": "Chunky brown sweater",
+    "price": 189000,
+    "originalPrice": 300000
+  },
+  {
+    "id": 7,
+    "name": "Classic brown wool sweater",
+    "price": 189000,
+    "originalPrice": 300000
+  },
+  {
+    "id": 8,
+    "name": "Long brown sweater brown sweater",
+    "price": 189000,
+    "originalPrice": 300000
+  }
+]

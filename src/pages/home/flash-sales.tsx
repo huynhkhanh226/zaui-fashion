@@ -1,3 +1,4 @@
+import ProductGrid from "components/product-grid";
 import ProductItem from "components/product-item";
 import Section from "components/section";
 import { useAtomValue } from "jotai";
@@ -8,11 +9,7 @@ export default function FlashSales() {
 
   return (
     <Section title="Flash Sales" viewMore={() => {}}>
-      <div className="grid grid-cols-2 px-4 py-2 gap-4">
-        {products.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-      </div>
+      <ProductGrid products={products} />
     </Section>
   );
 }

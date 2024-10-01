@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#3459A7",
+        secondary: "#EBEDEF",
         background: "#FFFFFF",
         foreground: "#0D0D0D",
         input: "#F7F7F8",
@@ -23,6 +24,7 @@ module.exports = {
         sm: ["14px", "18px"],
         base: ["15px", "20px"],
         lg: ["16px", "22px"],
+        xl: ["18px", "24px"],
       },
     },
   },
