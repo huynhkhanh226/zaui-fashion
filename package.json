@@ -20,6 +20,7 @@
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.4",
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-react": "^8.3.0",
     "jotai": "^2.10.0",

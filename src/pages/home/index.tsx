@@ -9,7 +9,7 @@ import HorizontalDivider from "components/horizontal-divider";
 const HomePage: React.FunctionComponent = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-full bg-subtle">
+    <div className="min-h-full bg-input">
       <div className="bg-background pt-2">
         <SearchBar />
         <Banners />

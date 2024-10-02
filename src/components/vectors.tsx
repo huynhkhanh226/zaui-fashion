@@ -284,3 +284,43 @@ export function ShareDecor() {
     </svg>
   );
 }
+
+export function PlusIcon() {
+  return (
+    <svg
+      width="25"
+      height="24"
+      viewBox="0 0 25 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M13.25 3.75C13.25 3.33579 12.9142 3 12.5 3C12.0858 3 11.75 3.33579 11.75 3.75V11.25H4.25C3.83579 11.25 3.5 11.5858 3.5 12C3.5 12.4142 3.83579 12.75 4.25 12.75H11.75V20.25C11.75 20.6642 12.0858 21 12.5 21C12.9142 21 13.25 20.6642 13.25 20.25V12.75H20.75C21.1642 12.75 21.5 12.4142 21.5 12C21.5 11.5858 21.1642 11.25 20.75 11.25H13.25V3.75Z"
+        fill="#0D0D0D"
+      />
+    </svg>
+  );
+}
+
+export function MinusIcon() {
+  return (
+    <svg
+      width="25"
+      height="24"
+      viewBox="0 0 25 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="3.5"
+        y="11.35"
+        width="18"
+        height="1.3"
+        rx="0.65"
+        fill="#0D0D0D"
+      />
+    </svg>
+  );
+}

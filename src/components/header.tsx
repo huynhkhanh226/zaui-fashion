@@ -5,13 +5,13 @@ import {
   useMatches,
   useNavigate,
 } from "react-router-dom";
-import { categoriesState } from "state";
+import { categoriesStateUpwrapped } from "state";
 import headerLogoImage from "static/header-logo.svg";
 import { BackIcon } from "./vectors";
 import { useMemo } from "react";
 
 export default function Header() {
-  const categories = useAtomValue(categoriesState);
+  const categories = useAtomValue(categoriesStateUpwrapped);
   const navigate = useNavigate();
   const location = useLocation();
   const matches = useMatches() as UIMatch<

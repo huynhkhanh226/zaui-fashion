@@ -16,6 +16,9 @@ export async function request<T>(
     ? `${API_URL}${path}`
     : mockUrls[`../mock${path}.json`]?.default;
 
+  if (!API_URL) {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+  }
   const response = await fetch(url, options);
   return response.json() as T;
 }

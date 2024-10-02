@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { atomFamily } from "jotai/utils";
+import { atomFamily, unwrap } from "jotai/utils";
 import { Category, Color, Product } from "types";
 import { requestWithFallback } from "utils/request";
 import { getUserInfo } from "zmp-sdk";
@@ -10,12 +10,22 @@ export const userState = atom(() =>
   })
 );
 
+export const bannersState = atom(() =>
+  requestWithFallback<string[]>("/banners", [])
+);
+
 export const categoriesState = atom(() =>
   requestWithFallback<Category[]>("/categories", [])
 );
 
+export const categoriesStateUpwrapped = unwrap(
+  categoriesState,
+  (prev) => prev ?? []
+);
+
 export const productsState = atom(async (get) => {
   const categories = await get(categoriesState);
+  console.log({ categories });
   const products = await requestWithFallback<
     (Product & { categoryId: number })[]
   >("/products", []);

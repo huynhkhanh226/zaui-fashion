@@ -5,6 +5,12 @@ export interface Product {
   originalPrice?: number;
   image: string;
   category: Category;
+  details?: Detail[];
+}
+
+export interface Detail {
+  title: string;
+  content: string;
 }
 
 export interface Category {

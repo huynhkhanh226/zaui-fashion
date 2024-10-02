@@ -14,7 +14,6 @@ module.exports = {
         input: "#F7F7F8",
         inactive: "#A9ADB2",
         tabIndicator: "#212121",
-        subtle: "#F7F7F8",
         subtitle: "#6F7071",
       },
       fontSize: {
