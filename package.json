@@ -29,7 +29,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.0",
     "resize-observer-polyfill": "^1.5.1",
-    "zmp-sdk": "latest"
+    "zmp-sdk": "^2.41.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.1",

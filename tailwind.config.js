@@ -11,7 +11,7 @@ module.exports = {
         secondary: "#EBEDEF",
         background: "#FFFFFF",
         foreground: "#0D0D0D",
-        input: "#F7F7F8",
+        section: "#F7F7F8",
         inactive: "#A9ADB2",
         tabIndicator: "#212121",
         subtitle: "#6F7071",

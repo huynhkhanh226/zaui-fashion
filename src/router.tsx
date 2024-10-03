@@ -1,7 +1,10 @@
 import Layout from "components/layout";
+import CartPage from "pages/cart";
+import CategoriesPage from "pages/categories";
 import CategoryPage from "pages/detail/category";
 import ProductPage from "pages/detail/product";
 import HomePage from "pages/home";
+import ProfilePage from "pages/profile";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { getBasePath } from "utils/zma";
 
@@ -20,7 +23,7 @@ const router = createBrowserRouter(
         },
         {
           path: "/categories",
-          element: <HomePage />,
+          element: <CategoriesPage />,
           handle: {
             title: "Danh mục sản phẩm",
             back: false,
@@ -28,11 +31,14 @@ const router = createBrowserRouter(
         },
         {
           path: "/cart",
-          element: <HomePage />,
+          element: <CartPage />,
         },
         {
           path: "/profile",
-          element: <HomePage />,
+          element: <ProfilePage />,
+          handle: {
+            logo: true,
+          },
         },
         {
           path: "/category/:id",

@@ -79,11 +79,11 @@ export default function ProductPage() {
           </div>
           {product.details && (
             <>
-              <div className="bg-input h-2 w-full"></div>
+              <div className="bg-section h-2 w-full"></div>
               <Collapse items={product.details} />
             </>
           )}
-          <div className="bg-input h-2 w-full"></div>
+          <div className="bg-section h-2 w-full"></div>
           <div className="font-medium py-2 px-4">
             <div className="pt-2 pb-2.5">Sản phẩm khác</div>
             <HorizontalDivider />
