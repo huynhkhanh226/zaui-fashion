@@ -15,6 +15,7 @@ module.exports = {
         inactive: "#A9ADB2",
         tabIndicator: "#212121",
         subtitle: "#6F7071",
+        danger: "#F50000",
       },
       fontSize: {
         "3xs": ["11px", "16px"],

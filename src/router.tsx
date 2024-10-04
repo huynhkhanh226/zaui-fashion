@@ -32,6 +32,9 @@ const router = createBrowserRouter(
         {
           path: "/cart",
           element: <CartPage />,
+          handle: {
+            title: "Giỏ hàng",
+          },
         },
         {
           path: "/profile",
