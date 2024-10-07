@@ -1,11 +1,11 @@
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { MutableRefObject, useLayoutEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
-import { cartState } from "state";
+import { cartState, cartTotalState } from "state";
 import { Cart, CartItem, Product, SelectedOptions } from "types";
 import { getDefaultOptions, isIdentical } from "utils/cart";
 import { getConfig } from "utils/template";
-import { openChat } from "zmp-sdk";
+import { openChat, purchase } from "zmp-sdk";
 
 export function useRealHeight(
   element: MutableRefObject<HTMLDivElement | null>,
@@ -37,12 +37,11 @@ export function useAddToCart(product: Product, editingCartItemId?: number) {
     [cart, editingCartItemId]
   );
 
-  const [quantity, setQuantity] = useState(1);
   const [options, setOptions] = useState<SelectedOptions>(
     editing ? editing.options : getDefaultOptions(product)
   );
 
-  function handleReplace(cart: Cart, editing: CartItem) {
+  function handleReplace(quantity: number, cart: Cart, editing: CartItem) {
     if (quantity === 0) {
       // the user wants to remove this item.
       cart.splice(cart.indexOf(editing), 1);
@@ -67,7 +66,7 @@ export function useAddToCart(product: Product, editingCartItemId?: number) {
     }
   }
 
-  function handleAppend(cart: Cart) {
+  function handleAppend(quantity: number, cart: Cart) {
     const existed = cart.find(
       (item) =>
         item.product.id === product.id && isIdentical(item.options, options)
@@ -89,20 +88,19 @@ export function useAddToCart(product: Product, editingCartItemId?: number) {
     }
   }
 
-  const addToCart = () => {
+  const addToCart = (quantity: number) => {
     setCart((cart) => {
       const res = [...cart];
       if (editing) {
-        handleReplace(res, editing);
+        handleReplace(quantity, res, editing);
       } else {
-        handleAppend(res);
-        toast.success(`Đã thêm ${product.name} vào giỏ hàng`);
+        handleAppend(quantity, res);
       }
       return res;
     });
   };
 
-  return { addToCart, quantity, setQuantity, options, setOptions };
+  return { addToCart, options, setOptions };
 }
 
 export function useCustomerSupport() {
@@ -118,4 +116,27 @@ export function useToBeImplemented() {
     toast("Chức năng dành cho các bên tích hợp phát triển...", {
       icon: "🛠️",
     });
+}
+
+export function useCheckout() {
+  const total = useAtomValue(cartTotalState);
+  const setCart = useSetAtom(cartState);
+  return async () => {
+    try {
+      await purchase({
+        amount: total,
+        desc: "Thanh toán đơn hàng",
+        method: "",
+      });
+      toast.success("Thanh toán thành công. Cảm ơn bạn đã mua hàng!", {
+        icon: "🎉",
+      });
+      setCart([]);
+    } catch (error) {
+      toast.error(
+        "Thanh toán thất bại. Vui lòng kiểm tra nội dung lỗi bên trong Console."
+      );
+      console.warn(error);
+    }
+  };
 }

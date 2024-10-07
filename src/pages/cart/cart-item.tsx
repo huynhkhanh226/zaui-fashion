@@ -8,14 +8,17 @@ import { useDrag } from "@use-gesture/react";
 import { RemoveIcon } from "components/vectors";
 import { useAtom } from "jotai";
 import { selectedCartItemIdsState } from "state";
+import { useEffect, useMemo, useState } from "react";
 
 const SWIPE_TO_DELTE_OFFSET = 80;
 
 export default function CartItem(props: CartItemProps) {
-  const { addToCart, quantity, setQuantity } = useAddToCart(
-    props.product,
-    props.id
-  );
+  const [quantity, setQuantity] = useState(props.quantity);
+  const { addToCart } = useAddToCart(props.product, props.id);
+  useEffect(() => {
+    addToCart(quantity);
+  }, [quantity]);
+
   const [{ x }, api] = useSpring(() => ({ x: 0 }));
   const bind = useDrag(
     ({ last, offset: [ox] }) => {
@@ -42,10 +45,25 @@ export default function CartItem(props: CartItemProps) {
     selectedCartItemIdsState
   );
 
+  const displayOptions = useMemo(
+    () =>
+      Object.entries({
+        Size: props.options.size,
+        Color: props.options.color,
+      })
+        .filter(([_, value]) => value !== undefined)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(" | "),
+    [props.options]
+  );
+
   return (
     <div className="relative">
       <div className="absolute right-0 top-0 bottom-0 w-20 border-t-[0.5px] border-b-[0.5px] border-black/10">
-        <div className="bg-danger text-white/95 w-full h-full flex flex-col space-y-1 justify-center items-center">
+        <div
+          className="bg-danger text-white/95 w-full h-full flex flex-col space-y-1 justify-center items-center cursor-pointer"
+          onClick={() => addToCart(0)}
+        >
           <RemoveIcon />
           <div className="text-2xs font-medium">Xoá</div>
         </div>
@@ -71,11 +89,11 @@ export default function CartItem(props: CartItemProps) {
         <img src={props.product.image} className="w-14 h-14 rounded-lg" />
         <div className="py-4 pr-4 flex-1 border-b-[0.5px] border-black/10">
           <div className="text-sm">{props.product.name}</div>
-          <div className="text-xs text-subtitle mt-0.5">
-            Size: {props.options.size} | Color: {props.options.color}
-          </div>
+          {displayOptions && (
+            <div className="text-xs text-subtitle mt-0.5">{displayOptions}</div>
+          )}
           <div className="flex items-center py-2 space-x-2">
-            <div className="flex-1 flex items-center space-x-0.5">
+            <div className="flex-1 flex flex-wrap items-center space-x-0.5">
               <div className="text-xs font-medium text-primary">
                 {formatPrice(props.product.price)}
               </div>

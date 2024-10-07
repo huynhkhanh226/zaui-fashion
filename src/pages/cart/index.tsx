@@ -5,6 +5,7 @@ import HorizontalDivider from "components/horizontal-divider";
 import { useAtomValue } from "jotai";
 import { cartState } from "state";
 import { EmptyBoxIcon } from "components/vectors";
+import SelectAll from "./select-all";
 
 export default function CartPage() {
   const cart = useAtomValue(cartState);
@@ -21,6 +22,8 @@ export default function CartPage() {
   }
   return (
     <div className="w-full h-full flex flex-col">
+      <SelectAll />
+      <HorizontalDivider />
       <CartList />
       <HorizontalDivider />
       <ApplyVoucher />

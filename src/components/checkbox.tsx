@@ -11,7 +11,7 @@ export default function Checkbox(props: CheckboxProps) {
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="cursor-pointer text-primary"
+      className="flex-none cursor-pointer text-primary"
       onClick={() => props.onChange(!props.checked)}
     >
       {props.checked ? (

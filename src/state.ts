@@ -39,6 +39,8 @@ export const productsState = atom(async (get) => {
 
 export const flashSaleProductsState = atom((get) => get(productsState));
 
+export const recommendedProductsState = atom((get) => get(productsState));
+
 export const sizesState = atom(["S", "M", " L", "XL"]);
 
 export const selectedSizeState = atom<string | undefined>(undefined);
@@ -82,3 +84,14 @@ export const cartTotalState = atom((get) => {
 });
 
 export const selectedCartItemIdsState = atom<number[]>([]);
+
+export const keywordState = atom("");
+
+export const searchResultState = atom(async (get) => {
+  const keyword = get(keywordState);
+  const products = await get(productsState);
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return products.filter((product) =>
+    product.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+});

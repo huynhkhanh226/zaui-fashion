@@ -1,6 +1,6 @@
 import Button from "components/button";
 import { CustomerSupportIcon } from "components/vectors";
-import { useCustomerSupport, useToBeImplemented } from "hooks";
+import { useCheckout, useCustomerSupport, useToBeImplemented } from "hooks";
 import { useAtomValue } from "jotai";
 import { cartState, cartTotalState } from "state";
 import { formatPrice } from "utils/format";
@@ -8,9 +8,8 @@ import { formatPrice } from "utils/format";
 export default function CartSummary() {
   const cart = useAtomValue(cartState);
   const cartTotal = useAtomValue(cartTotalState);
-
   const contact = useCustomerSupport();
-  const toBeImplemented = useToBeImplemented();
+  const checkout = useCheckout();
 
   return (
     <div className="flex-none flex items-center py-3 px-4 space-x-2">
@@ -23,7 +22,7 @@ export default function CartSummary() {
       <Button className="w-10 h-10 !p-2" onClick={contact}>
         <CustomerSupportIcon />
       </Button>
-      <Button primary onClick={toBeImplemented}>
+      <Button primary onClick={checkout}>
         Mua ngay
       </Button>
     </div>

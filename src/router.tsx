@@ -5,6 +5,7 @@ import CategoryPage from "pages/detail/category";
 import ProductPage from "pages/detail/product";
 import HomePage from "pages/home";
 import ProfilePage from "pages/profile";
+import SearchPage from "pages/search";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { getBasePath } from "utils/zma";
 
@@ -55,6 +56,13 @@ const router = createBrowserRouter(
           path: "/product/:id",
           element: <ProductPage />,
           handle: {},
+        },
+        {
+          path: "/search",
+          element: <SearchPage />,
+          handle: {
+            title: "Tìm kiếm",
+          },
         },
       ],
     },

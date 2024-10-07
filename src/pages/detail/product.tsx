@@ -1,24 +1,38 @@
 import Button from "components/button";
 import HorizontalDivider from "components/horizontal-divider";
 import { useAtomValue } from "jotai";
-import { useParams } from "react-router-dom";
-import { colorsState, productState, sizesState } from "state";
+import { useNavigate, useParams } from "react-router-dom";
+import { productState } from "state";
 import { formatPrice } from "utils/format";
 import ShareButton from "./share-buttont";
 import VariantPicker from "./variant-picker";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Collapse from "components/collapse";
 import RelatedProducts from "./related-products";
 import { useAddToCart } from "hooks";
+import toast from "react-hot-toast";
+import { Color, Size } from "types";
 
 export default function ProductPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = useAtomValue(productState(Number(id)))!;
-  const [selectedColor, setSelectedColor] = useState(product.colors?.[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes?.[0]);
+  const [selectedColor, setSelectedColor] = useState<Color>();
+  const [selectedSize, setSelectedSize] = useState<Size>();
 
-  const { addToCart, quantity, setQuantity, options, setOptions } =
-    useAddToCart(product);
+  const scrollContainer = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    setSelectedColor(product.colors?.[0]);
+    setSelectedSize(product.sizes?.[0]);
+    if (scrollContainer.current) {
+      scrollContainer.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [id]);
+
+  const { addToCart, setOptions } = useAddToCart(product);
 
   useEffect(() => {
     setOptions({
@@ -29,7 +43,7 @@ export default function ProductPage() {
 
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="flex-1 overflow-y-auto">
+      <div ref={scrollContainer} className="flex-1 overflow-y-auto">
         <div className="w-full px-4">
           <div className="py-2">
             <img
@@ -105,10 +119,23 @@ export default function ProductPage() {
 
       <HorizontalDivider />
       <div className="flex-none grid grid-cols-2 gap-2 py-3 px-4">
-        <Button large onClick={() => addToCart()}>
+        <Button
+          large
+          onClick={() => {
+            addToCart(1);
+            toast.success(`Đã thêm ${product.name} vào giỏ hàng`);
+          }}
+        >
           Thêm vào giỏ
         </Button>
-        <Button large primary>
+        <Button
+          large
+          primary
+          onClick={() => {
+            addToCart(1);
+            navigate("/cart");
+          }}
+        >
           Mua ngay
         </Button>
       </div>
