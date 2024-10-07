@@ -8,7 +8,7 @@ export default function Category() {
   const navigate = useNavigate();
 
   return (
-    <Section title="Danh mục sản phẩm" viewMore={() => {}}>
+    <Section title="Danh mục sản phẩm" viewMore={() => navigate("/categories")}>
       <div className="pt-2.5 pb-4 flex space-x-6 overflow-x-auto px-4">
         {categories.map((category) => (
           <div

@@ -2,7 +2,7 @@
 import ResizeObserver from "resize-observer-polyfill";
 Object.assign(window, { ResizeObserver });
 
-import { useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import { EmblaCarouselType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -51,12 +51,13 @@ export const useDotButton = (
 };
 
 export interface CarouselProps {
-  slides: string[];
+  slides: ReactNode[];
+  disabled?: boolean;
 }
 
 export default function Carousel(props: CarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ active: true }),
+    Autoplay({ active: !props.disabled }),
   ]);
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
@@ -64,9 +65,9 @@ export default function Carousel(props: CarouselProps) {
   return (
     <div className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
-        {props.slides.map((slide) => (
-          <div key={slide} className="flex-none basis-full p-4 pb-0">
-            <img className="w-full rounded" src={slide} />
+        {props.slides.map((slide, i) => (
+          <div key={i} className="flex-none basis-full p-4 pb-0">
+            {slide}
           </div>
         ))}
       </div>
@@ -77,7 +78,7 @@ export default function Carousel(props: CarouselProps) {
             key={index}
             onClick={() => onDotButtonClick(index)}
             className={`rounded-full w-1 h-1 bg-black/10 ${
-              index === selectedIndex ? "bg-primary" : ""
+              index === selectedIndex && !props.disabled ? "bg-primary" : ""
             }`}
           />
         ))}

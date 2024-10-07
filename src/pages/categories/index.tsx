@@ -11,7 +11,7 @@ export default function CategoriesPage() {
   return (
     <>
       <div className="py-2">
-        <SearchBar />
+        <SearchBar onClick={() => navigate("/search")} />
       </div>
       <CategoryTabs />
       <div className="grid grid-cols-4 p-4 gap-x-4 gap-y-8">

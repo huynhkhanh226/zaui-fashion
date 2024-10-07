@@ -12,7 +12,7 @@ const HomePage: React.FunctionComponent = () => {
   return (
     <div className="min-h-full bg-section">
       <div className="bg-background pt-2">
-        <SearchBar />
+        <SearchBar onClick={() => navigate("/search")} />
         <Banners />
       </div>
       <div className="bg-background space-y-2 mt-2">

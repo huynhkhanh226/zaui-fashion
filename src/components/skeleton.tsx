@@ -1,18 +1,84 @@
-export default function Skeleton() {
-  const getRandomWidth = () =>
-    `${Math.floor(Math.random() * (100 - 30 + 1) + 30)}%`;
+import { useNavigate } from "react-router-dom";
+import SearchBar from "./search-bar";
+import Tabs from "./tabs";
+import Section from "./section";
+import HorizontalDivider from "./horizontal-divider";
+import Carousel from "./carousel";
 
+export function PageSkeleton() {
+  const navigate = useNavigate();
   return (
-    <div className="space-y-4 pt-2 px-4 animate-pulse">
-      {Array(20)
-        .fill(0)
-        .map((_, index) => (
-          <div
-            key={index}
-            className="h-4 bg-secondary rounded-lg"
-            style={{ width: getRandomWidth() }}
-          ></div>
-        ))}
+    <div className="min-h-full bg-section">
+      <div className="bg-background pt-2">
+        <div className="px-4">
+          <div className="w-full h-12 rounded-lg bg-secondary animate-pulse" />
+        </div>
+        <Carousel
+          slides={[1, 2, 3].map(() => (
+            <div className="w-full aspect-video rounded-lg bg-secondary animate-pulse" />
+          ))}
+          disabled
+        />
+      </div>
+      <div className="bg-background space-y-2 mt-2">
+        <Tabs
+          items={[1, 2, 3, 4]}
+          selectedTab={undefined}
+          onSelect={() => {}}
+          renderLabel={(key) => (
+            <div
+              key={key}
+              className="h-6 w-10 rounded-lg bg-secondary animate-pulse"
+            />
+          )}
+        />
+
+        <Section
+          title={
+            <div className="h-[18px] w-36 rounded-lg bg-secondary animate-pulse" />
+          }
+        >
+          <div className="pt-2.5 pb-4 flex space-x-6 overflow-x-auto px-4">
+            {[1, 2, 3, 4].map((key) => (
+              <div
+                key={key}
+                className="flex flex-col items-center space-y-2 flex-none basis-[70px] overflow-hidden cursor-pointer"
+              >
+                <div className="w-[70px] h-[70px] object-cover rounded-full border-[0.5px] border-black/15 bg-secondary animate-pulse" />
+                <div className="w-full h-9">
+                  <div className="w-full h-[18px] rounded-lg bg-secondary animate-pulse"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      </div>
+      <HorizontalDivider />
+      <Section
+        title={
+          <div className="h-[18px] w-20 rounded-lg bg-secondary animate-pulse" />
+        }
+      >
+        <div className="grid grid-cols-2 px-4 py-2 gap-4">
+          {[1, 2, 3, 4].map((key) => (
+            <ProductItemSkeleton key={key} />
+          ))}
+        </div>
+      </Section>
+    </div>
+  );
+}
+
+export function ProductItemSkeleton() {
+  return (
+    <div className="flex flex-col">
+      <div className="w-full h-[150px] bg-secondary animate-pulse rounded-t-lg" />
+      <div className="py-2 space-y-0.5">
+        <div className="h-[14px] w-1/5 bg-secondary animate-pulse rounded-lg" />
+        <div className="h-9 bg-secondary animate-pulse rounded-lg" />
+        <div className="h-[18px] w-1/2 bg-secondary animate-pulse rounded-lg" />
+        <div className="h-[14px] w-1/3 bg-secondary animate-pulse rounded-lg" />
+      </div>
     </div>
   );
 }

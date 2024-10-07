@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
+
 export interface TabsProps<T> {
   items: T[];
   selectedTab: T;
   onSelect: (item: T) => void;
-  renderLabel: (item: T) => string;
+  renderLabel: (item: T) => ReactNode;
 }
 
 export default function Tabs<T>(props: TabsProps<T>) {
