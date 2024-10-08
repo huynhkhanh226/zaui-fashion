@@ -16,12 +16,9 @@ export default function Layout() {
       </div>
       <Footer />
       <Toaster
-        position="top-center"
+        containerClassName="toast-container"
         containerStyle={{
-          top: "calc(60px + env(safe-area-inset-top))",
-          left: 20,
-          bottom: 20,
-          right: 20,
+          top: "calc(50% - 24px)",
         }}
       />
     </div>

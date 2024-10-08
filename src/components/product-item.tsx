@@ -16,7 +16,7 @@ export default function ProductItem(props: ProductItemProps) {
     >
       <img
         src={props.product.image}
-        className="w-full h-[150px] object-cover rounded-t-lg"
+        className="w-full aspect-square object-cover rounded-t-lg"
         alt={props.product.name}
       />
       <div className="py-2">

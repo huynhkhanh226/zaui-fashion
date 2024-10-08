@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 
 export interface TabsProps<T> {
   items: T[];
-  selectedTab: T;
-  onSelect: (item: T) => void;
+  value: T;
+  onChange: (item: T) => void;
   renderLabel: (item: T) => ReactNode;
 }
 
@@ -18,18 +18,18 @@ export default function Tabs<T>(props: TabsProps<T>) {
       {props.items.map((item) => (
         <div
           className="h-full flex flex-col px-3 cursor-pointer"
-          onClick={() => props.onSelect(item)}
+          onClick={() => props.onChange(item)}
         >
           <div className="flex-1 flex items-center justify-center">
             <span
               className={"truncate font-medium ".concat(
-                item === props.selectedTab ? "" : "text-inactive"
+                item === props.value ? "" : "text-inactive"
               )}
             >
               {props.renderLabel(item)}
             </span>
           </div>
-          {props.selectedTab === item && (
+          {props.value === item && (
             <div className="bg-tabIndicator h-[1.5px] rounded-t-sm -mt-px" />
           )}
         </div>

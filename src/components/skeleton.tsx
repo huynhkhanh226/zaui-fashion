@@ -23,8 +23,8 @@ export function PageSkeleton() {
       <div className="bg-background space-y-2 mt-2">
         <Tabs
           items={[1, 2, 3, 4]}
-          selectedTab={undefined}
-          onSelect={() => {}}
+          value={undefined}
+          onChange={() => {}}
           renderLabel={(key) => (
             <div
               key={key}
@@ -72,7 +72,7 @@ export function PageSkeleton() {
 export function ProductItemSkeleton() {
   return (
     <div className="flex flex-col">
-      <div className="w-full h-[150px] bg-secondary animate-pulse rounded-t-lg" />
+      <div className="w-full aspect-square bg-secondary animate-pulse rounded-t-lg" />
       <div className="py-2 space-y-0.5">
         <div className="h-[14px] w-1/5 bg-secondary animate-pulse rounded-lg" />
         <div className="h-9 bg-secondary animate-pulse rounded-lg" />

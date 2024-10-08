@@ -62,7 +62,7 @@ export default function ProductPage() {
           )}
           <div className="text-sm mt-1">{product.name}</div>
           <div className="py-2">
-            <ShareButton />
+            <ShareButton product={product} />
           </div>
           {product.colors && (
             <VariantPicker
@@ -123,7 +123,7 @@ export default function ProductPage() {
           large
           onClick={() => {
             addToCart(1);
-            toast.success(`Đã thêm ${product.name} vào giỏ hàng`);
+            toast.success("Đã thêm vào giỏ hàng");
           }}
         >
           Thêm vào giỏ
