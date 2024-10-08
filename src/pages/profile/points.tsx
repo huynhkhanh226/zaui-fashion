@@ -4,7 +4,7 @@ import Barcode from "./barcode";
 export default function Points() {
   return (
     <div
-      className="rounded-lg bg-primary text-white aspect-video p-8 pt-6 bg-cover text-center"
+      className="rounded-lg bg-primary text-white p-8 pt-6 bg-cover text-center"
       style={{
         backgroundImage: `url(${pointsCover})`,
       }}
