@@ -107,7 +107,7 @@ export function useCustomerSupport() {
   return () =>
     openChat({
       type: "oa",
-      id: getConfig((config) => config.template.OA_ID),
+      id: getConfig((config) => config.template.oaIDtoOpenChat),
     });
 }
 

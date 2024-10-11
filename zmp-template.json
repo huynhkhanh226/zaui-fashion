@@ -1,12 +1,12 @@
 {
   "name": "ZaUI Fashion",
   "options": {
-    "API_URL": {
+    "apiUrl": {
       "title": "API URL",
       "description": "Đường dẫn đến API để lấy dữ liệu sản phẩm",
       "type": "string"
     },
-    "OA_ID": {
+    "oaIDtoOpenChat": {
       "title": "Zalo OA ID",
       "description": "ID của OA được mở chat khi người dùng nhấn vào nút Liên hệ",
       "type": "string"

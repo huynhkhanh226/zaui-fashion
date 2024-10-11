@@ -17,7 +17,8 @@
   "listSyncJS": [],
   "listAsyncJS": [],
   "template": {
-    "API_URL": "",
-    "OA_ID": "4318657068771012646"
+    "name": "zaui-fashion",
+    "apiUrl": "",
+    "oaIDtoOpenChat": "4318657068771012646"
   }
 }

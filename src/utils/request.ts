@@ -1,7 +1,6 @@
-import { getAccessToken } from "zmp-sdk";
 import { getConfig } from "./template";
 
-const API_URL = getConfig((config) => config.template.API_URL);
+const API_URL = getConfig((config) => config.template.apiUrl);
 
 const mockUrls = import.meta.glob<{ default: string }>("../mock/*.json", {
   query: "url",
