@@ -10,7 +10,8 @@ export default function SelectAll() {
     selectedCartItemIdsState
   );
   const checkedAll =
-    selectedItemIds.length > 0 && selectedItemIds.length === cart.length;
+    selectedItemIds.length > 0 &&
+    !cart.some((item) => !selectedItemIds.includes(item.id));
   const checkAll = () => {
     setSelectedItemIds(cart.map((item) => item.id));
   };

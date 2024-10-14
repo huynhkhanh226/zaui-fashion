@@ -1,22 +1,36 @@
-import { useNavigate } from "react-router-dom";
 import { Product } from "types";
 import { formatPrice } from "utils/format";
+import TransitionLink from "./transition-link";
+import { useState } from "react";
 
 export interface ProductItemProps {
   product: Product;
+  /**
+   * Whether to replace the current page when user clicks on this product item. Default behavior is to push a new page to the history stack.
+   * This prop should be used when navigating to a new product detail from a current product detail page (related products, etc.)
+   */
+  replace?: boolean;
 }
 
 export default function ProductItem(props: ProductItemProps) {
-  const navigate = useNavigate();
+  const [selected, setSelected] = useState(false);
 
   return (
-    <div
-      className="flex flex-col cursor-pointer"
-      onClick={() => navigate(`/product/${props.product.id}`)}
+    <TransitionLink
+      className="flex flex-col cursor-pointer group"
+      to={`/product/${props.product.id}`}
+      replace={props.replace}
+      onClick={() => setSelected(true)}
     >
       <img
         src={props.product.image}
         className="w-full aspect-square object-cover rounded-t-lg"
+        style={{
+          viewTransitionName:
+            selected || !props.replace // only animate the "clicked" product item in related products list
+              ? `product-image-${props.product.id}`
+              : undefined,
+        }}
         alt={props.product.name}
       />
       <div className="py-2">
@@ -31,6 +45,6 @@ export default function ProductItem(props: ProductItemProps) {
           {formatPrice(props.product.price)}
         </div>
       </div>
-    </div>
+    </TransitionLink>
   );
 }

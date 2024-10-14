@@ -15,10 +15,29 @@ const SWIPE_TO_DELTE_OFFSET = 80;
 export default function CartItem(props: CartItemProps) {
   const [quantity, setQuantity] = useState(props.quantity);
   const { addToCart } = useAddToCart(props.product, props.id);
+
+  const [selectedItemIds, setSelectedItemIds] = useAtom(
+    selectedCartItemIdsState
+  );
+
+  const displayOptions = useMemo(
+    () =>
+      Object.entries({
+        Size: props.options.size,
+        Color: props.options.color,
+      })
+        .filter(([_, value]) => value !== undefined)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(" | "),
+    [props.options]
+  );
+
+  // update cart
   useEffect(() => {
     addToCart(quantity);
   }, [quantity]);
 
+  // swipe left to delete animation
   const [{ x }, api] = useSpring(() => ({ x: 0 }));
   const bind = useDrag(
     ({ last, offset: [ox] }) => {
@@ -39,22 +58,6 @@ export default function CartItem(props: CartItemProps) {
       rubberband: true,
       preventScroll: true,
     }
-  );
-
-  const [selectedItemIds, setSelectedItemIds] = useAtom(
-    selectedCartItemIdsState
-  );
-
-  const displayOptions = useMemo(
-    () =>
-      Object.entries({
-        Size: props.options.size,
-        Color: props.options.color,
-      })
-        .filter(([_, value]) => value !== undefined)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join(" | "),
-    [props.options]
   );
 
   return (

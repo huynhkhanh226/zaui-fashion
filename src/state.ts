@@ -29,7 +29,6 @@ export const categoriesStateUpwrapped = unwrap(
 
 export const productsState = atom(async (get) => {
   const categories = await get(categoriesState);
-  console.log({ categories });
   const products = await requestWithFallback<
     (Product & { categoryId: number })[]
   >("/products", []);
@@ -45,7 +44,7 @@ export const flashSaleProductsState = atom((get) => get(productsState));
 
 export const recommendedProductsState = atom((get) => get(productsState));
 
-export const sizesState = atom(["S", "M", " L", "XL"]);
+export const sizesState = atom(["S", "M", "L", "XL"]);
 
 export const selectedSizeState = atom<string | undefined>(undefined);
 
@@ -79,15 +78,24 @@ export const productState = atomFamily((id: number) =>
 
 export const cartState = atom<Cart>([]);
 
-export const cartTotalState = atom((get) => {
+export const selectedCartItemIdsState = atom<number[]>([]);
+
+export const checkoutItemsState = atom((get) => {
+  const ids = get(selectedCartItemIdsState);
   const cart = get(cartState);
-  return cart.reduce(
-    (total, item) => total + item.product.price * item.quantity,
-    0
-  );
+  return cart.filter((item) => ids.includes(item.id));
 });
 
-export const selectedCartItemIdsState = atom<number[]>([]);
+export const cartTotalState = atom((get) => {
+  const items = get(checkoutItemsState);
+  return {
+    totalItems: items.length,
+    totalAmount: items.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    ),
+  };
+});
 
 export const keywordState = atom("");
 

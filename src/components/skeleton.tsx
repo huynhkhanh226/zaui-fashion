@@ -1,12 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import SearchBar from "./search-bar";
 import Tabs from "./tabs";
 import Section from "./section";
 import HorizontalDivider from "./horizontal-divider";
 import Carousel from "./carousel";
 
 export function PageSkeleton() {
-  const navigate = useNavigate();
   return (
     <div className="min-h-full bg-section">
       <div className="bg-background pt-2">

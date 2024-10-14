@@ -1,4 +1,4 @@
-import Dropdown from "components/dropdown";
+import { Select } from "components/lazyloaded";
 import { useAtom, useAtomValue } from "jotai";
 import {
   colorsState,
@@ -6,8 +6,9 @@ import {
   selectedSizeState,
   sizesState,
 } from "state";
+import { Color } from "types";
 
-export default function Filter() {
+export default function ProductFilter() {
   const sizes = useAtomValue(sizesState);
   const [size, setSize] = useAtom(selectedSizeState);
   const colors = useAtomValue(colorsState);
@@ -15,26 +16,36 @@ export default function Filter() {
 
   return (
     <div className="flex px-4 py-3 space-x-2 overflow-x-auto">
-      <Dropdown
+      <Select
         items={sizes}
         value={size}
         onChange={setSize}
-        renderTitle={(selectedSize) =>
+        renderTitle={(selectedSize?: string) =>
           `Kích thước${selectedSize ? `: ${selectedSize}` : ""}`
         }
+        renderItemKey={(size: string) => String(size)}
       />
-      <Dropdown
+      <Select
         items={colors}
         value={color}
         onChange={setColor}
-        renderTitle={(selectedColor) =>
+        renderTitle={(selectedColor?: Color) =>
           `Màu sắc${selectedColor ? `: ${selectedColor.name}` : ""}`
         }
-        renderItem={(color) => color.name}
+        renderItemLabel={(color: Color) => color.name}
+        renderItemKey={(color: Color) => color.name}
       />
-      <button className="bg-primary text-white rounded-full h-8 flex-none px-3">
-        Xoá bộ lọc
-      </button>
+      {(color !== undefined || size !== undefined) && (
+        <button
+          className="bg-primary text-white rounded-full h-8 flex-none px-3"
+          onClick={() => {
+            setColor(undefined);
+            setSize(undefined);
+          }}
+        >
+          Xoá bộ lọc
+        </button>
+      )}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import Layout from "components/layout";
 import CartPage from "pages/cart";
-import CategoriesPage from "pages/categories";
-import CategoryPage from "pages/detail/category";
-import ProductPage from "pages/detail/product";
+import ProductListPage from "pages/catalog/product-list";
+import CategoryListPage from "pages/catalog/category-list";
+import ProductDetailPage from "pages/catalog/product-detail";
 import HomePage from "pages/home";
 import ProfilePage from "pages/profile";
 import SearchPage from "pages/search";
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
         },
         {
           path: "/categories",
-          element: <CategoriesPage />,
+          element: <CategoryListPage />,
           handle: {
             title: "Danh mục sản phẩm",
             back: false,
@@ -45,8 +45,15 @@ const router = createBrowserRouter(
           },
         },
         {
+          path: "/flash-sales",
+          element: <ProductListPage />,
+          handle: {
+            title: "Flash Sales",
+          },
+        },
+        {
           path: "/category/:id",
-          element: <CategoryPage />,
+          element: <ProductListPage />,
           handle: {
             title: ({ categories, params }) =>
               categories.find((c) => c.id === Number(params.id))?.name,
@@ -54,8 +61,10 @@ const router = createBrowserRouter(
         },
         {
           path: "/product/:id",
-          element: <ProductPage />,
-          handle: {},
+          element: <ProductDetailPage />,
+          handle: {
+            scrollRestoration: 0, // when user selects another product in related products, scroll to the top of the page
+          },
         },
         {
           path: "/search",
