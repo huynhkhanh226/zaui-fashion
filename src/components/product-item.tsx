@@ -22,29 +22,33 @@ export default function ProductItem(props: ProductItemProps) {
       replace={props.replace}
       onClick={() => setSelected(true)}
     >
-      <img
-        src={props.product.image}
-        className="w-full aspect-square object-cover rounded-t-lg"
-        style={{
-          viewTransitionName:
-            selected || !props.replace // only animate the "clicked" product item in related products list
-              ? `product-image-${props.product.id}`
-              : undefined,
-        }}
-        alt={props.product.name}
-      />
-      <div className="py-2">
-        <div className="text-3xs text-subtitle truncate">
-          {props.product.category.name}
-        </div>
-        <div className="text-xs h-9 line-clamp-2">{props.product.name}</div>
-        <div className="mt-0.5 text-sm font-medium">
-          {formatPrice(props.product.price)}
-        </div>
-        <div className="text-3xs text-subtitle line-through">
-          {formatPrice(props.product.price)}
-        </div>
-      </div>
+      {({ isTransitioning }) => (
+        <>
+          <img
+            src={props.product.image}
+            className="w-full aspect-square object-cover rounded-t-lg"
+            style={{
+              viewTransitionName:
+                isTransitioning && selected // only animate the "clicked" product item in related products list
+                  ? `product-image-${props.product.id}`
+                  : undefined,
+            }}
+            alt={props.product.name}
+          />
+          <div className="py-2">
+            <div className="text-3xs text-subtitle truncate">
+              {props.product.category.name}
+            </div>
+            <div className="text-xs h-9 line-clamp-2">{props.product.name}</div>
+            <div className="mt-0.5 text-sm font-medium">
+              {formatPrice(props.product.price)}
+            </div>
+            <div className="text-3xs text-subtitle line-through">
+              {formatPrice(props.product.price)}
+            </div>
+          </div>
+        </>
+      )}
     </TransitionLink>
   );
 }

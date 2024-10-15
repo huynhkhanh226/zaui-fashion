@@ -8,10 +8,10 @@ export default function ProductListPage() {
   const products = useAtomValue(productsState);
 
   return (
-    <div>
+    <>
       <ProductFilter />
       <HorizontalDivider />
       <ProductGrid products={products} className="pt-4 pb-[13px]" />
-    </div>
+    </>
   );
 }
