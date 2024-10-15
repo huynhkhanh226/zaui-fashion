@@ -15,8 +15,9 @@ export default function Tabs<T>(props: TabsProps<T>) {
         gridTemplateColumns: `repeat(${props.items.length}, minmax(0, 1fr))`,
       }}
     >
-      {props.items.map((item) => (
+      {props.items.map((item, i) => (
         <div
+          key={i}
           className="h-full flex flex-col px-3 cursor-pointer"
           onClick={() => props.onChange(item)}
         >

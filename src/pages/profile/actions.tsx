@@ -34,6 +34,7 @@ export default function ProfileActions() {
         },
       ].map((action) => (
         <div
+          key={action.label}
           className="flex flex-col gap-2 items-center cursor-pointer"
           onClick={action.onClick}
         >

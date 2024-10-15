@@ -10,6 +10,7 @@ export interface ProductGridProps extends HTMLAttributes<HTMLDivElement> {
 export default function ProductGrid({
   products,
   className,
+  replace,
   ...props
 }: ProductGridProps) {
   return (
@@ -18,11 +19,7 @@ export default function ProductGrid({
       {...props}
     >
       {products.map((product) => (
-        <ProductItem
-          key={product.id}
-          product={product}
-          replace={props.replace}
-        />
+        <ProductItem key={product.id} product={product} replace={replace} />
       ))}
     </div>
   );

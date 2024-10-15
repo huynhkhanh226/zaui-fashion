@@ -7,15 +7,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#3459A7",
-        secondary: "#EBEDEF",
-        background: "#FFFFFF",
-        foreground: "#0D0D0D",
-        section: "#F7F7F8",
-        inactive: "#A9ADB2",
-        tabIndicator: "#212121",
-        subtitle: "#6F7071",
-        danger: "#F50000",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        section: "var(--section)",
+        inactive: "var(--inactive)",
+        tabIndicator: "var(--tabIndicator)",
+        subtitle: "var(--subtitle)",
+        danger: "var(--danger)",
+        skeleton: "var(--skeleton)",
       },
       fontSize: {
         "3xs": ["11px", "16px"],

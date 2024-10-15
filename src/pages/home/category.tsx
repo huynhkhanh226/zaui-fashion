@@ -12,6 +12,7 @@ export default function Category() {
       <div className="pt-2.5 pb-4 flex space-x-6 overflow-x-auto px-4">
         {categories.map((category) => (
           <TransitionLink
+            key={category.id}
             className="flex flex-col items-center space-y-2 flex-none basis-[70px] overflow-hidden cursor-pointer"
             to={`/category/${category.id}`}
           >

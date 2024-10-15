@@ -23,9 +23,9 @@ export default function Checkbox(props: CheckboxProps) {
           <path
             d="M7 12.5L10.5 16L18 8.5"
             stroke="white"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </>
       ) : (
@@ -37,7 +37,7 @@ export default function Checkbox(props: CheckboxProps) {
           <path
             d="M1.5 8C1.5 4.13401 4.63401 1 8.5 1H16.5C20.366 1 23.5 4.13401 23.5 8V16C23.5 19.866 20.366 23 16.5 23H8.5C4.63401 23 1.5 19.866 1.5 16V8Z"
             stroke="#C2C7CB"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </>
       )}

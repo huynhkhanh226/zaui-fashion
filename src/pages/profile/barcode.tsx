@@ -7,7 +7,7 @@ export default function Barcode() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1735_54347)">
+      <g clipPath="url(#clip0_1735_54347)">
         <path
           d="M60.7905 -55.507H53.7334V104.665H60.7905V-55.507Z"
           fill="black"

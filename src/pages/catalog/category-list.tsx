@@ -18,6 +18,7 @@ export default function CategoryListPage() {
       <div className="grid grid-cols-4 p-4 gap-x-4 gap-y-8">
         {categories.map((category) => (
           <TransitionLink
+            key={category.id}
             className="flex flex-col items-center space-y-2 overflow-hidden cursor-pointer"
             to={`/category/${category.id}`}
           >
