@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { Fragment, ReactNode, useEffect, useRef, useState } from "react";
 import { MinusIcon, PlusIcon } from "./vectors";
 import HorizontalDivider from "./horizontal-divider";
 import { useRealHeight } from "hooks";
@@ -48,10 +48,10 @@ export default function Collapse(props: CollapseProps) {
   return (
     <div className="px-4 py-1">
       {props.items.map((item, index) => (
-        <>
+        <Fragment key={index}>
           <CollapseItem key={index} {...item} />
           {index < props.items.length - 1 && <HorizontalDivider />}
-        </>
+        </Fragment>
       ))}
     </div>
   );
