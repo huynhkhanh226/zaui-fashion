@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import SearchBar from "./search-bar";
 import Tabs from "./tabs";
 import Section from "./section";
 import HorizontalDivider from "./horizontal-divider";
 import Carousel from "./carousel";
+import { ChevronDown } from "./vectors";
 
 export function PageSkeleton() {
-  const navigate = useNavigate();
   return (
     <div className="min-h-full bg-section">
       <div className="bg-background pt-2">
@@ -79,6 +77,17 @@ export function ProductItemSkeleton() {
         <div className="h-[18px] w-1/2 bg-secondary animate-pulse rounded-lg" />
         <div className="h-[14px] w-1/3 bg-secondary animate-pulse rounded-lg" />
       </div>
+    </div>
+  );
+}
+
+export function SelectSkeleton(props: { width: number }) {
+  return (
+    <div
+      className="h-8 rounded-full bg-secondary animate-pulse px-3 flex items-center justify-end"
+      style={{ width: props.width }}
+    >
+      <ChevronDown />
     </div>
   );
 }

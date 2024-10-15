@@ -20,7 +20,7 @@ export default function Button({
         primary ? "bg-primary text-white" : "bg-secondary"
       } text-base font-medium rounded-lg ${
         large ? "px-6 py-3.5" : small ? "px-3 py-[7px]" : "px-6 py-2.5"
-      } ${className ?? ""}`}
+      } disabled:opacity-50 ${className ?? ""}`}
       {...props}
     />
   );

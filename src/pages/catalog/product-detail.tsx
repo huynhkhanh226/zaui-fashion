@@ -1,7 +1,12 @@
 import Button from "components/button";
 import HorizontalDivider from "components/horizontal-divider";
 import { useAtomValue } from "jotai";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  unstable_useViewTransitionState,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { productState } from "state";
 import { formatPrice } from "utils/format";
 import ShareButton from "./share-buttont";
@@ -13,23 +18,16 @@ import { useAddToCart } from "hooks";
 import toast from "react-hot-toast";
 import { Color, Size } from "types";
 
-export default function ProductPage() {
+export default function ProductDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const product = useAtomValue(productState(Number(id)))!;
   const [selectedColor, setSelectedColor] = useState<Color>();
   const [selectedSize, setSelectedSize] = useState<Size>();
 
-  const scrollContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
     setSelectedColor(product.colors?.[0]);
     setSelectedSize(product.sizes?.[0]);
-    if (scrollContainer.current) {
-      scrollContainer.current.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
   }, [id]);
 
   const { addToCart, setOptions } = useAddToCart(product);
@@ -43,13 +41,17 @@ export default function ProductPage() {
 
   return (
     <div className="w-full h-full flex flex-col">
-      <div ref={scrollContainer} className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto">
         <div className="w-full px-4">
           <div className="py-2">
             <img
+              key={product.id}
               src={product.image}
               alt={product.name}
               className="w-full h-full object-cover rounded-lg"
+              style={{
+                viewTransitionName: `product-image-${product.id}`,
+              }}
             />
           </div>
           <div className="text-xl font-medium text-primary">

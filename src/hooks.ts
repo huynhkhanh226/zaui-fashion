@@ -1,6 +1,7 @@
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { MutableRefObject, useLayoutEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
+import { UIMatch, useMatches } from "react-router-dom";
 import { cartState, cartTotalState } from "state";
 import { Cart, CartItem, Product, SelectedOptions } from "types";
 import { getDefaultOptions, isIdentical } from "utils/cart";
@@ -119,12 +120,12 @@ export function useToBeImplemented() {
 }
 
 export function useCheckout() {
-  const total = useAtomValue(cartTotalState);
+  const { totalAmount } = useAtomValue(cartTotalState);
   const setCart = useSetAtom(cartState);
   return async () => {
     try {
       await purchase({
-        amount: total,
+        amount: totalAmount,
         desc: "Thanh toán đơn hàng",
         method: "",
       });
@@ -139,4 +140,19 @@ export function useCheckout() {
       console.warn(error);
     }
   };
+}
+
+export function useRouteHandle() {
+  const matches = useMatches() as UIMatch<
+    undefined,
+    {
+      title?: string | Function;
+      logo?: boolean;
+      back?: boolean;
+      scrollRestoration?: number;
+    }
+  >[];
+  const lastMatch = matches[matches.length - 1];
+
+  return [lastMatch.handle, lastMatch, matches] as const;
 }

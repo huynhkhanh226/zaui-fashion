@@ -31,7 +31,8 @@
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.23.0",
     "resize-observer-polyfill": "^1.5.1",
-    "zmp-sdk": "^2.41.0"
+    "zmp-sdk": "^2.41.0",
+    "zmp-ui": "^1.11.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.1",

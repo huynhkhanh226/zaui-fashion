@@ -1,9 +1,10 @@
-import { Outlet, useMatches } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "./header";
 import Footer from "./footer";
 import { Suspense } from "react";
 import { PageSkeleton } from "./skeleton";
 import { Toaster } from "react-hot-toast";
+import { ScrollRestoration } from "./scroll-restoration";
 
 export default function Layout() {
   return (
@@ -21,6 +22,7 @@ export default function Layout() {
           top: "calc(50% - 24px)",
         }}
       />
+      <ScrollRestoration />
     </div>
   );
 }

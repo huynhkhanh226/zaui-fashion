@@ -9,35 +9,27 @@ import { categoriesStateUpwrapped } from "state";
 import headerLogoImage from "static/header-logo.svg";
 import { BackIcon } from "./vectors";
 import { useMemo } from "react";
+import { useRouteHandle } from "hooks";
 
 export default function Header() {
   const categories = useAtomValue(categoriesStateUpwrapped);
   const navigate = useNavigate();
   const location = useLocation();
-  const matches = useMatches() as UIMatch<
-    undefined,
-    {
-      title?: string | Function;
-      logo?: boolean;
-      back?: boolean;
-    }
-  >[];
-  const lastMatch = matches[matches.length - 1];
+  const [handle, match] = useRouteHandle();
 
   const title = useMemo(() => {
-    if (lastMatch.handle) {
-      if (typeof lastMatch.handle.title === "function") {
-        return lastMatch.handle.title({ categories, params: lastMatch.params });
+    if (handle) {
+      if (typeof handle.title === "function") {
+        return handle.title({ categories, params: match.params });
       } else {
-        return lastMatch.handle.title;
+        return handle.title;
       }
     }
-  }, [matches, categories]);
+  }, [handle, categories]);
 
-  const showBack =
-    location.key !== "default" && lastMatch.handle?.back !== false;
+  const showBack = location.key !== "default" && handle?.back !== false;
 
-  if (lastMatch.handle?.logo) {
+  if (handle?.logo) {
     return (
       <div className="h-14 w-full flex items-center px-4 py-2">
         <img src={headerLogoImage} className="max-h-full flex-none" />

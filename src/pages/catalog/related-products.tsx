@@ -14,5 +14,5 @@ export default function RelatedProducts(props: RelatedProductsProps) {
     [products, props.currentProductId]
   );
 
-  return <ProductGrid products={otherProducts} />;
+  return <ProductGrid replace products={otherProducts} />;
 }

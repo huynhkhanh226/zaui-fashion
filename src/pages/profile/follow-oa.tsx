@@ -35,9 +35,6 @@ export default function FollowOAWidget() {
       id: "oaWidget",
       guidingText: "Quan tâm OA để nhận các đặc quyền ưu đãi",
       color: "#F7F7F8",
-      onStatusChange: (status) => {
-        console.log(status);
-      },
     });
   }, []);
 

@@ -4,6 +4,7 @@ import { HTMLAttributes } from "react";
 
 export interface ProductGridProps extends HTMLAttributes<HTMLDivElement> {
   products: Product[];
+  replace?: boolean;
 }
 
 export default function ProductGrid({
@@ -17,7 +18,11 @@ export default function ProductGrid({
       {...props}
     >
       {products.map((product) => (
-        <ProductItem key={product.id} product={product} />
+        <ProductItem
+          key={product.id}
+          product={product}
+          replace={props.replace}
+        />
       ))}
     </div>
   );

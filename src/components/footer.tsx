@@ -1,8 +1,8 @@
-import { useMatches, useNavigate } from "react-router-dom";
 import { CartIcon, CategoryIcon, HomeIcon, ProfileIcon } from "./vectors";
 import HorizontalDivider from "./horizontal-divider";
 import { useAtomValue } from "jotai";
 import { cartState } from "state";
+import TransitionLink from "./transition-link";
 
 const NAV_ITEMS = [
   {
@@ -41,9 +41,6 @@ const NAV_ITEMS = [
 ];
 
 export default function Footer() {
-  const navigate = useNavigate();
-  const matches = useMatches();
-
   return (
     <>
       <HorizontalDivider />
@@ -55,23 +52,23 @@ export default function Footer() {
         }}
       >
         {NAV_ITEMS.map((item) => {
-          const isActive =
-            matches.length > 1 && matches[1].pathname === item.path;
           return (
-            <div
+            <TransitionLink
+              to={item.path}
               key={item.path}
               className="flex flex-col items-center space-y-0.5 p-1 pb-0.5 cursor-pointer active:scale-105"
-              onClick={() => {
-                navigate(item.path);
-              }}
             >
-              <div className="w-6 h-6 flex justify-center items-center">
-                <item.icon active={isActive} />
-              </div>
-              <div className={`text-2xs ${isActive ? "text-primary" : ""}`}>
-                {item.name}
-              </div>
-            </div>
+              {({ isActive }) => (
+                <>
+                  <div className="w-6 h-6 flex justify-center items-center">
+                    <item.icon active={isActive} />
+                  </div>
+                  <div className={`text-2xs ${isActive ? "text-primary" : ""}`}>
+                    {item.name}
+                  </div>
+                </>
+              )}
+            </TransitionLink>
           );
         })}
       </div>

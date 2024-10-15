@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Banners from "./banners";
 import SearchBar from "../../components/search-bar";
-import Tabs from "components/tabs";
 import Category from "./category";
 import FlashSales from "./flash-sales";
 import HorizontalDivider from "components/horizontal-divider";
