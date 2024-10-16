@@ -63,7 +63,7 @@ This template is built using **Vite 5.x**, which is **not compatible** with Zalo
 
 ## Usage:
 
-The repository contains sample UI components for building your application. You may [integrate your APIs](#load-data-from-your-server) to fetch menu items, order history, OA info, and process orders. You may also modify the code to suit your business needs.
+The repository contains sample UI components for building your application. You may [integrate your APIs](#load-data-from-your-server) to load categories, products, and process orders. You may also modify the code to suit your business needs.
 
 Folder structure:
 
@@ -94,7 +94,6 @@ The other files (such as `tailwind.config.js`, `vite.config.mts`, `tsconfig.json
    ```json
    "template": {
       "apiUrl": "https://my-server.com/api/", // Set this to your API URL
-      "oaIDtoOpenChat": "4318657068771012646"
    }
    ```
 1. Your server should implement the following APIs:

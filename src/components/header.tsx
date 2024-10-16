@@ -38,7 +38,7 @@ export default function Header() {
   }
 
   return (
-    <div className="h-12 w-full flex items-center pl-4 pr-[106px] py-2 space-x-1">
+    <div className="h-12 w-full flex items-center pl-2 pr-[106px] py-2 space-x-1">
       {showBack && (
         <div className="p-2 cursor-pointer" onClick={() => navigate(-1)}>
           <BackIcon />
