@@ -7,12 +7,8 @@
     "actionBarHidden": true,
     "hideAndroidBottomNavigationBar": false,
     "hideIOSSafeAreaBottom": true,
-    "statusBarColor": "",
-    "textAlign": "left",
     "selfControlLoading": false
   },
-  "debug": false,
-  "pages": [],
   "listCSS": [],
   "listSyncJS": [],
   "listAsyncJS": [],
