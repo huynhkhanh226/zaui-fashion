@@ -1,7 +1,7 @@
 import { CartIcon, CategoryIcon, HomeIcon, ProfileIcon } from "./vectors";
 import HorizontalDivider from "./horizontal-divider";
 import { useAtomValue } from "jotai";
-import { cartState } from "state";
+import { cartState } from "@/state";
 import TransitionLink from "./transition-link";
 
 const NAV_ITEMS = [

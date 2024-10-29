@@ -5,11 +5,11 @@ import {
   useMatches,
   useNavigate,
 } from "react-router-dom";
-import { categoriesStateUpwrapped } from "state";
-import headerLogoImage from "static/header-logo.svg";
+import { categoriesStateUpwrapped } from "@/state";
+import headerLogoImage from "@/static/header-logo.svg";
 import { BackIcon } from "./vectors";
 import { useMemo } from "react";
-import { useRouteHandle } from "hooks";
+import { useRouteHandle } from "@/hooks";
 
 export default function Header() {
   const categories = useAtomValue(categoriesStateUpwrapped);

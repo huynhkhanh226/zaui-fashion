@@ -1,15 +1,15 @@
-import ProductItem from "components/product-item";
-import SearchBar from "components/search-bar";
-import Section from "components/section";
-import { ProductItemSkeleton } from "components/skeleton";
-import { SearchIconLarge } from "components/vectors";
+import ProductItem from "@/components/product-item";
+import SearchBar from "@/components/search-bar";
+import Section from "@/components/section";
+import { ProductItemSkeleton } from "@/components/skeleton";
+import { SearchIconLarge } from "@/components/vectors";
 import { useAtom, useAtomValue } from "jotai";
 import { Suspense, useEffect, useRef, useState } from "react";
 import {
   keywordState,
   recommendedProductsState,
   searchResultState,
-} from "state";
+} from "@/state";
 
 export function SearchResult() {
   const searchResult = useAtomValue(searchResultState);

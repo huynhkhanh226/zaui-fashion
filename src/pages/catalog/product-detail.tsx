@@ -1,5 +1,5 @@
-import Button from "components/button";
-import HorizontalDivider from "components/horizontal-divider";
+import Button from "@/components/button";
+import HorizontalDivider from "@/components/horizontal-divider";
 import { useAtomValue } from "jotai";
 import {
   unstable_useViewTransitionState,
@@ -7,14 +7,14 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import { productState } from "state";
-import { formatPrice } from "utils/format";
+import { productState } from "@/state";
+import { formatPrice } from "@/utils/format";
 import ShareButton from "./share-buttont";
 import VariantPicker from "./variant-picker";
 import { useEffect, useRef, useState } from "react";
-import Collapse from "components/collapse";
+import Collapse from "@/components/collapse";
 import RelatedProducts from "./related-products";
-import { useAddToCart } from "hooks";
+import { useAddToCart } from "@/hooks";
 import toast from "react-hot-toast";
 import { Color, Size } from "types";
 

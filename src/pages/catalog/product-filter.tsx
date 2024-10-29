@@ -1,5 +1,5 @@
-import { Select } from "components/lazyloaded";
-import { SelectSkeleton } from "components/skeleton";
+import { Select } from "@/components/lazyloaded";
+import { SelectSkeleton } from "@/components/skeleton";
 import { useAtom, useAtomValue } from "jotai";
 import { Suspense } from "react";
 import {
@@ -7,7 +7,7 @@ import {
   selectedColorState,
   selectedSizeState,
   sizesState,
-} from "state";
+} from "@/state";
 import { Color } from "types";
 
 export default function ProductFilter() {

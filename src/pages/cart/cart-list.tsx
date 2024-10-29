@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { cartState } from "state";
+import { cartState } from "@/state";
 import CartItem from "./cart-item";
 
 export default function CartList() {

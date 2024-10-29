@@ -1,10 +1,10 @@
 import CartList from "./cart-list";
 import ApplyVoucher from "./apply-voucher";
 import CartSummary from "./cart-summary";
-import HorizontalDivider from "components/horizontal-divider";
+import HorizontalDivider from "@/components/horizontal-divider";
 import { useAtomValue } from "jotai";
-import { cartState } from "state";
-import { EmptyBoxIcon } from "components/vectors";
+import { cartState } from "@/state";
+import { EmptyBoxIcon } from "@/components/vectors";
 import SelectAll from "./select-all";
 
 export default function CartPage() {

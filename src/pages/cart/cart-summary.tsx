@@ -1,9 +1,9 @@
-import Button from "components/button";
-import { CustomerSupportIcon } from "components/vectors";
-import { useCheckout, useCustomerSupport } from "hooks";
+import Button from "@/components/button";
+import { CustomerSupportIcon } from "@/components/vectors";
+import { useCheckout, useCustomerSupport } from "@/hooks";
 import { useAtomValue } from "jotai";
-import { cartTotalState } from "state";
-import { formatPrice } from "utils/format";
+import { cartTotalState } from "@/state";
+import { formatPrice } from "@/utils/format";
 
 export default function CartSummary() {
   const { totalItems, totalAmount } = useAtomValue(cartTotalState);

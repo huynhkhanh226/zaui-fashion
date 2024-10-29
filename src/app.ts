@@ -4,12 +4,12 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
 // Router
-import router from "router";
+import router from "@/router";
 
 // Tailwind stylesheet
-import "css/tailwind.scss";
+import "@/css/tailwind.scss";
 // Your stylesheet
-import "css/app.scss";
+import "@/css/app.scss";
 
 // Expose app configuration
 import appConfig from "../app-config.json";
