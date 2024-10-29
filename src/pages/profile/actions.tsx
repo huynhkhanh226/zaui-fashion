@@ -3,8 +3,8 @@ import {
   PackageIcon,
   ProfileIcon,
   VoucherIcon,
-} from "components/vectors";
-import { useToBeImplemented } from "hooks";
+} from "@/components/vectors";
+import { useToBeImplemented } from "@/hooks";
 
 export default function ProfileActions() {
   const toBeImplemented = useToBeImplemented();

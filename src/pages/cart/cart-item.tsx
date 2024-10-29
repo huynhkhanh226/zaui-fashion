@@ -1,13 +1,13 @@
-import Checkbox from "components/checkbox";
-import QuantityInput from "components/quantity-input";
-import { useAddToCart } from "hooks";
+import Checkbox from "@/components/checkbox";
+import QuantityInput from "@/components/quantity-input";
+import { useAddToCart } from "@/hooks";
 import { CartItem as CartItemProps } from "types";
-import { formatPrice } from "utils/format";
+import { formatPrice } from "@/utils/format";
 import { animated, useSpring } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
-import { RemoveIcon } from "components/vectors";
+import { RemoveIcon } from "@/components/vectors";
 import { useAtom } from "jotai";
-import { selectedCartItemIdsState } from "state";
+import { selectedCartItemIdsState } from "@/state";
 import { useEffect, useMemo, useState } from "react";
 
 const SWIPE_TO_DELTE_OFFSET = 80;

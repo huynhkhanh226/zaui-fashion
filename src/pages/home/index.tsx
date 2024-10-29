@@ -3,8 +3,8 @@ import Banners from "./banners";
 import SearchBar from "../../components/search-bar";
 import Category from "./category";
 import FlashSales from "./flash-sales";
-import HorizontalDivider from "components/horizontal-divider";
-import CategoryTabs from "components/category-tabs";
+import HorizontalDivider from "@/components/horizontal-divider";
+import CategoryTabs from "@/components/category-tabs";
 
 const HomePage: React.FunctionComponent = () => {
   const navigate = useNavigate();

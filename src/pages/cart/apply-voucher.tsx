@@ -1,5 +1,5 @@
-import { VoucherIcon, ChevronRight } from "components/vectors";
-import { useToBeImplemented } from "hooks";
+import { VoucherIcon, ChevronRight } from "@/components/vectors";
+import { useToBeImplemented } from "@/hooks";
 
 export default function ApplyVoucher() {
   const toBeImplemented = useToBeImplemented();

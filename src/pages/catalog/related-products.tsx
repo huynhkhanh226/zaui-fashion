@@ -1,7 +1,7 @@
-import ProductGrid from "components/product-grid";
+import ProductGrid from "@/components/product-grid";
 import { useAtomValue } from "jotai";
 import { useMemo } from "react";
-import { productsState } from "state";
+import { productsState } from "@/state";
 
 export interface RelatedProductsProps {
   currentProductId: number;
